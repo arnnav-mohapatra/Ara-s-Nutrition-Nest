@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ara's Nutrition Nest · Healthcare & wellness</title>
+    <!-- Professional font: Inter & refined Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e1f2e9 0%, #d4e8df 100%);
+            font-family: 'Inter', 'Source Sans 3', sans-serif;
+            color: #1f3b33;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        /* smooth animated background */
+        .wrapper {
+            max-width: 1500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px 48px 36px 36px;
+            box-shadow: 0 35px 68px rgba(29, 71, 54, 0.35), 0 8px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: box-shadow 0.4s ease;
+        }
+
+        .wrapper:hover {
+            box-shadow: 0 45px 80px rgba(24, 70, 50, 0.45);
+        }
+
+        /* header with extra glow */
+        .header {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 1.2rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 2px solid rgba(140, 200, 170, 0.5);
+            box-shadow: 0 8px 32px rgba(46, 91, 72, 0.12);
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .logo-wrapper:hover {
+            transform: scale(1.03) translateY(-3px);
+            filter: drop-shadow(0 12px 18px #9abfaa);
+        }
+
+        /* New logo with glassmorphism */
+        .logo-graphic {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(145deg, #1e4f4a, #296b5f);
+            border-radius: 22px;
+            padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+            color: #f6ffea;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+            box-shadow: 0 14px 24px -8px rgba(26, 67, 56, 0.5), inset 0 -2px 0 rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,240,0.25);
+            transition: box-shadow 0.3s;
+        }
+        .logo-graphic .ara {
+            font-size: 2rem;
+            letter-spacing: 2.5px;
+            text-shadow: 0 2px 5px #b7ffe0;
+        }
+        .logo-graphic .nutrition {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            background: rgba(230, 255, 230, 0.25);
+            color: #e0ffed;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            margin-top: 4px;
+            backdrop-filter: blur(4px);
+        }
+
+        .logo-text h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 2.1rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1e4f4a, #31755e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #3b6d5b;
+            letter-spacing: 0.5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.3rem;
+        }
+
+        .social-icon {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(8px);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            color: #1f5a48;
+            text-decoration: none;
+            box-shadow: 0 10px 18px -6px rgba(43, 102, 77, 0.3), inset 0 -1px 0 #ffffff90;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .social-icon:hover {
+            background: #2b7b60;
+            color: white;
+            transform: translateY(-6px) scale(1.08);
+            box-shadow: 0 20px 25px -8px #1a4f3f;
+            border-color: #c7ffe0;
+        }
+
+        /* main layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.9fr;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* card panel with glass and depth */
+        .card-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 40px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 25px 45px -18px rgba(29, 77, 59, 0.4), inset 0 1px 2px rgba(255,255,255,0.8);
+            border: 1px solid rgba(180, 220, 200, 0.7);
+            transition: box-shadow 0.4s, background 0.2s;
+        }
+
+        .card-panel:hover {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 30px 55px -12px #194734;
+        }
+
+        .section-title {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            background: linear-gradient(130deg, #1d5b4b, #368068);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.8rem;
+            border-left: 8px solid #7dc6a5;
+            padding-left: 1.4rem;
+            text-shadow: 2px 2px 10px rgba(125, 198, 165, 0.3);
+        }
+
+        .selector-area {
+            background: rgba(240, 252, 244, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 48px;
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2.6rem;
+            border: 1px solid rgba(170, 215, 190, 0.7);
+            box-shadow: inset 0 2px 8px rgba(255,255,255,0.6), 0 10px 18px -12px #397f64;
+        }
+
+        .label-drop {
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+            display: block;
+            color: #1a5444;
+            letter-spacing: -0.2px;
+        }
+
+        .product-dropdown {
+            width: 100%;
+            padding: 1.1rem 1.5rem;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            border: 1.8px solid #c2e3d2;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            color: #1e3f36;
+            outline: none;
+            cursor: pointer;
+            transition: 0.25s;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 6px 14px rgba(107, 155, 129, 0.2);
+        }
+
+        .product-dropdown:hover, .product-dropdown:focus {
+            border-color: #368a6a;
+            box-shadow: 0 12px 22px -10px #31755e, 0 0 0 4px rgba(71, 158, 126, 0.2);
+        }
+
+        .add-row {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .qty-discount {
+            display: flex;
+            gap: 1rem;
+            flex: 3;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .qty-discount input[type="number"] {
+            width: 90px;
+            padding: 1rem 0.5rem;
+            border: 1.8px solid #d2ecd9;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: 600;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(4px);
+            box-shadow: inset 0 2px 5px #bee0cf, 0 5px 10px rgba(0,0,0,0.02);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .discount-select, .discount-manual {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(6px);
+            border: 1.8px solid #d0ead2;
+            border-radius: 50px;
+            padding: 0.95rem 1.4rem;
+            font-family: 'Inter', sans-serif;
+            color: #1b4d3d;
+            font-weight: 500;
+            box-shadow: 0 5px 12px #c2dfcf;
+            transition: all 0.2s;
+        }
+        .discount-select:hover, .discount-manual:hover {
+            border-color: #368a6a;
+            box-shadow: 0 8px 18px #9dcbb5;
+        }
+
+        .discount-manual {
+            width: 120px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(165deg, #22664f, #2e8064);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 1.1rem 2.4rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 25px -8px rgba(31, 88, 64, 0.6), 0 2px 0 0 rgba(255,255,255,0.3) inset;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            white-space: nowrap;
+            transform: translateY(0);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(165deg, #1f7a5c, #329b77);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 25px 35px -8px #1a6047;
+        }
+
+        .btn-primary:active {
+            transform: translateY(2px);
+            box-shadow: 0 8px 18px -6px #124e3a;
+        }
+
+        /* cart table with sleek style */
+        .cart-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+            background: transparent;
+            font-size: 0.85rem;
+        }
+
+        .cart-table th {
+            background: rgba(180, 215, 195, 0.6);
+            backdrop-filter: blur(4px);
+            font-weight: 700;
+            padding: 1rem 0.3rem;
+            color: #153f33;
+            white-space: nowrap;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            border-radius: 30px 30px 8px 8px;
+        }
+
+        .cart-table td {
+            padding: 1rem 0.3rem;
+            background: rgba(250, 255, 248, 0.6);
+            backdrop-filter: blur(4px);
+            text-align: center;
+            font-weight: 500;
+            border-radius: 16px;
+            box-shadow: 0 6px 12px -8px #99bba8;
+        }
+
+        .cart-table .item-name {
+            font-weight: 600;
+            color: #12503d;
+            text-align: left;
+            min-width: 180px;
+            padding-left: 12px;
+        }
+
+        .remove-btn {
+            background: rgba(255, 235, 235, 0.7);
+            backdrop-filter: blur(6px);
+            border: 1px solid #ecc7c7;
+            color: #aa4040;
+            font-size: 1.2rem;
+            border-radius: 40px;
+            width: 38px;
+            height: 38px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px #f1cbcb;
+        }
+
+        .remove-btn:hover {
+            background: #f7c9c9;
+            border-color: #b13e3e;
+            transform: scale(1.15) rotate(4deg);
+            box-shadow: 0 8px 14px #dc9e9e;
+        }
+
+        .total-row td {
+            background: rgba(200, 230, 212, 0.8);
+            backdrop-filter: blur(6px);
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 40px;
+            box-shadow: 0 6px 14px #b2cfbe;
+        }
+
+        .checkout-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        /* order page same treatment */
+        #orderPage {
+            display: none;
+        }
+
+        .order-summary-card {
+            background: rgba(240, 250, 240, 0.7);
+            backdrop-filter: blur(14px);
+            border-radius: 36px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(140, 200, 165, 0.8);
+            box-shadow: 0 15px 30px -12px #1c5b48;
+        }
+
+        .summary-details {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 1.8rem;
+            font-size: 1rem;
+            white-space: pre-line;
+            border: 1px solid white;
+        }
+
+        .order-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .order-form label {
+            font-weight: 600;
+            color: #1a5e48;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .order-form input, .order-form textarea, .order-form select {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(190, 225, 205, 0.8);
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 6px 16px #e0f0e6;
+        }
+
+        .order-form input:focus, .order-form textarea:focus, .order-form select:focus {
+            border-color: #358568;
+            outline: none;
+            box-shadow: 0 0 0 5px rgba(71, 158, 126, 0.25), 0 8px 18px #abcfbf;
+        }
+
+        .submit-btn {
+            background: linear-gradient(145deg, #1e624b, #257a5d);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 80px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 25px 35px -12px #1a674b, 0 2px 0 0 #b3ffe0 inset;
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(145deg, #248063, #2f9e7a);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 35px 40px -12px #11573f;
+        }
+
+        .back-to-cart {
+            background: rgba(225, 240, 230, 0.8);
+            backdrop-filter: blur(10px);
+            color: #1d5b45;
+            border: 1px solid #b7dec9;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1.8rem;
+            font-size: 1.05rem;
+            box-shadow: 0 10px 22px -10px #609e81;
+            transition: 0.2s;
+        }
+        .back-to-cart:hover {
+            background: #c5edd9;
+            transform: translateX(-4px);
+        }
+
+        .site-footer {
+            background: rgba(210, 235, 220, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 1.8rem 2.5rem;
+            text-align: center;
+            color: #194b3a;
+            font-weight: 600;
+            border-top: 2px solid rgba(170, 215, 185, 0.8);
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 6px #cef3e0;
+        }
+
+        .footer-note a.whatsapp-link {
+            background: #25D366;
+            color: white;
+            padding: 0.6rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 15px 25px -10px #1b7943;
+            transition: 0.25s;
+        }
+        .footer-note a.whatsapp-link:hover {
+            transform: scale(1.05) translateY(-3px);
+            background: #22c35e;
+        }
+
+        hr {
+            border: 1px solid rgba(170, 220, 185, 0.7);
+            margin: 2rem 2.5rem 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!-- header with new ARA'S NUTRITION logo (transition) -->
+    <div class="header">
+        <div class="logo-wrapper">
+            <!-- New logo graphic based on image -->
+            <div class="logo-graphic">
+                <div class="ara">ARA'S</div>
+                <div class="nutrition">NUTRITION</div>
+            </div>
+            <div class="logo-text">
+                <h1>Ara's Nutrition Nest</h1>
+                <span>healthcare · wellness · nourishment</span>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/aradhana_mohapatra08/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919724756867?text=Hello%20Ara's%20Nutrition%20Nest" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <!-- PAGE 1: CART & PRODUCTS (visible by default) -->
+    <div id="cartPage">
+        <div class="content-grid">
+            <div class="full-width card-panel">
+                <h2 class="section-title">🥗 price master & cart · step 1</h2>
+                <!-- dropdown + discount area -->
+                <div class="selector-area">
+                    <label class="label-drop" for="productSelect"><i class="fas fa-seedling" style="margin-right: 8px;"></i>Choose a product (Excel price master)</label>
+                    <select id="productSelect" class="product-dropdown"></select>
+                    
+                    <div class="add-row">
+                        <div class="qty-discount">
+                            <input type="number" id="itemQty" value="1" min="1" step="1">
+                            <!-- preset discount dropdown - updated with 0,15,25,35,42,50 -->
+                            <select id="discountSelect" class="discount-select">
+                                <option value="0">0%</option>
+                                <option value="15">15%</option>
+                                <option value="25">25%</option>
+                                <option value="35">35%</option>
+                                <option value="42">42%</option>
+                                <option value="50">50%</option>
+                            </select>
+                            <!-- manual custom discount input -->
+                            <input type="number" id="customDiscount" class="discount-manual" placeholder="Custom %" min="0" max="100" step="0.5">
+                        </div>
+                        <button class="btn-primary" id="addToCartBtn"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                    </div>
+                    <div class="price-master-data" id="selectedPricePreview">Select product</div>
+                </div>
+
+                <!-- CART with ALL columns from image: Product Name, Volume Point, MRP, Retail Price, Earn Base, Discount on Earn Base, Discounted Price, Qty, Sub-Total, GST, Total Price -->
+                <table class="cart-table" id="cartTable">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Vol Pt</th>
+                            <th>MRP</th>
+                            <th>Retail</th>
+                            <th>Earn Base</th>
+                            <th>Disc on Earn</th>
+                            <th>Disc Price</th>
+                            <th>Qty</th>
+                            <th>Sub-Total</th>
+                            <th>GST</th>
+                            <th>Total Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartBody">
+                        <!-- dynamic rows -->
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row"><td colspan="11" style="text-align:right;">Cart total (incl. GST): ₹<span id="cartTotal">0</span></td><td></td></tr>
+                    </tfoot>
+                </table>
+                
+                <div class="checkout-bar">
+                    <button class="btn-primary" id="goToCheckoutBtn"><i class="fas fa-arrow-right"></i> Proceed to Checkout →</button>
+                </div>
+                <p style="margin-top:0.8rem; font-size:0.9rem; opacity:0.9;"><i class="far fa-check-circle" style="color:#2e7d5e;"></i> Discount on Earn Base = Earn Base * (discount%) ; Discounted Price = Retail - Discount on Earn Base. GST 5% (18% for Vritilife skincare).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: ORDER FORM (hidden initially) -->
+    <div id="orderPage">
+        <div class="content-grid">
+            <div class="full-width card-panel">
+                <button class="back-to-cart" id="backToCartBtn"><i class="fas fa-arrow-left"></i> Back to Cart</button>
+                <h2 class="section-title" style="border-left-color: #a8d8c1;">📋 consumer order · step 2</h2>
+                
+                <!-- summary card showing cart before form -->
+                <div class="order-summary-card">
+                    <h3>Order summary (from cart)</h3>
+                    <div class="summary-details" id="orderSummaryText">
+                        <!-- filled dynamically -->
+                    </div>
+                </div>
+
+                <form class="order-form" id="orderForm" action="https://formspree.io/f/mpqjrbok" method="POST">
+                    <!-- hidden field to send cart summary -->
+                    <input type="hidden" name="cart_summary" id="cartSummaryInput">
+                    
+                    <div class="form-group">
+                        <label>Full name *</label>
+                        <input type="text" name="name" placeholder="e.g. Aradhana Mohapatra" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email address *</label>
+                        <input type="email" name="email" placeholder="hello@nutritionnest.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone / WhatsApp</label>
+                        <input type="tel" name="phone" placeholder="9724756867" value="9724756867">
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery address *</label>
+                        <textarea name="address" rows="2" placeholder="street, city, pincode" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Additional notes</label>
+                        <textarea name="notes" rows="2" placeholder="allergies, preferences ..."></textarea>
+                    </div>
+                    <!-- global discount field (optional) -->
+                    <div class="form-group">
+                        <label>Global discount (additional)</label>
+                        <select name="global_discount" class="discount-select">
+                            <option value="0">0%</option>
+                            <option value="15">15%</option>
+                            <option value="25">25%</option>
+                            <option value="35">35%</option>
+                            <option value="42">42%</option>
+                            <option value="50">50%</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitFormBtn"><i class="fas fa-paper-plane"></i> Place order (secure form)</button>
+                    <div class="footnote">
+                        <i class="fas fa-lock" style="opacity:0.7;"></i> form connected to Formspree endpoint
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with copyright (and social links) -->
+    <div class="site-footer">
+        <i class="far fa-copyright"></i> 2026 Ara's Nutrition Nest — All rights reserved. nourishing lives, naturally.
+    </div>
+    <!-- additional bottom bar with contact (still part of footer) -->
+    <div style="background: rgba(220, 245, 230, 0.7); backdrop-filter: blur(10px); padding: 1rem 2.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid rgba(170, 215, 185, 0.8);">
+        <div style="font-weight:500;">🌱 connect with Aradhana directly</div>
+        <div style="display: flex; gap: 1.5rem;">
+            <a href="https://wa.me/919724756867?text=Order%20inquiry%20from%20Ara's%20Nutrition%20Nest" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> +91 97247 56867</a>
+            <a href="https://www.instagram.com/aradhana_mohapatra08/" target="_blank" style="color:#1e4f4a; font-weight:600; background: #ffffff70; padding:0.5rem 1.4rem; border-radius:50px; backdrop-filter:blur(8px);"><i class="fab fa-instagram"></i> aradhana_mohapatra08</a>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // ---------- PRICE MASTER with all fields (including Earn Base) ----------
+    const priceMaster = [
+        { name: "Active fiber complex – Unflavored", vol: 22.95, mrp: 2559, retail: 2437, earn: 2084 },
+        { name: "Afresh Energy Drink Mix Ginger 50 g", vol: 7.8, mrp: 812, retail: 773, earn: 662 },
+        { name: "Afresh Energy Drink Mix Tulsi 50 g", vol: 7.8, mrp: 812, retail: 773, earn: 630 },
+        { name: "Beta Heart Vanilla", vol: 19.55, mrp: 2242, retail: 2135, earn: 1576 },
+        { name: "Cell Activator New 60 Tablets", vol: 21.95, mrp: 2215, retail: 2109, earn: 1804 },
+        { name: "Cell-U-Loss 90 Tablets", vol: 15.75, mrp: 1705, retail: 1623, earn: 1388 },
+        { name: "Dinoshake Chocolate 200 g", vol: 9.6, mrp: 1115, retail: 1061, earn: 908 },
+        { name: "Dinoshake Strawberry 200 g", vol: 9.6, mrp: 1115, retail: 1061, earn: 908 },
+        { name: "Formula 1 Nutritional shake mix Kulfi 500 g", vol: 21.75, mrp: 2179, retail: 2075, earn: 1776 },
+        { name: "Formula 1 Nutritional shake mix Kulfi 750 g", vol: 32.65, mrp: 3227, retail: 3073, earn: 2628 },
+        { name: "Herbal Aloe concentrate (original)", vol: 24.95, mrp: 2696, retail: 2567, earn: 2195 },
+        { name: "Herbal Control", vol: 32.95, mrp: 3433, retail: 3269, earn: 2796 },
+        { name: "Herbalife Calcium Tablets", vol: 10.25, mrp: 1203, retail: 1145, earn: 979 },
+        { name: "Herbalife H24 Hydrate", vol: 14.05, mrp: 1636, retail: 1558, earn: 1134 },
+        { name: "Herbalifeline® 60 Softgels", vol: 25.75, mrp: 2667, retail: 2540, earn: 2172 },
+        { name: "Joint Support", vol: 20.9, mrp: 2455, retail: 2338, earn: 2000 },
+        { name: "Liftoff Watermelon [10 Serving]", vol: 12.95, mrp: 1401, retail: 1334, earn: 1140 },
+        { name: "Liftoff Watermelon [30 Serving]", vol: 38.05, mrp: 4119, retail: 3922, earn: 3354 },
+        { name: "Multivitamin Mineral and Herbal Tablets Plus 90 Tablets", vol: 19.95, mrp: 2004, retail: 1908, earn: 1632 },
+        { name: "Niteworks", vol: 75, mrp: 7128, retail: 6788, earn: 5804 },
+        { name: "Personalized Protein Powder 200 g", vol: 11.5, mrp: 1295, retail: 1233, earn: 1054 },
+        { name: "Personalized Protein Powder 400 g", vol: 22.5, mrp: 2485, retail: 2366, earn: 2023 },
+        { name: "Shakemate Powder 500 g", vol: 6.45, mrp: 653, retail: 621, earn: 306 },
+        { name: "Simply Probiotic", vol: 21.95, mrp: 2209, retail: 2103, earn: 1799 },
+        { name: "Skin Booster [30 Serving]", vol: 38.65, mrp: 3910, retail: 3723, earn: 2749 },
+        { name: "Sleep Enhancer", vol: 16.3, mrp: 1697, retail: 1616, earn: 1382 },
+        { name: "Triphala 60 Tablets", vol: 11.25, mrp: 1089, retail: 1037, earn: 887 },
+        { name: "Vritilife Brain Health", vol: 15.1, mrp: 1464, retail: 1394, earn: 1192 },
+        { name: "Vritilife Facial cleanser", vol: 10.4, mrp: 1165, retail: 987, earn: 844, gst: 18 },
+        { name: "Vritilife Facial Serum", vol: 27.05, mrp: 3022, retail: 2561, earn: 2190, gst: 18 },
+        { name: "Vritilife Facial Toner", vol: 11.8, mrp: 1322, retail: 1120, earn: 958, gst: 18 },
+        { name: "Vritilife Immune Health", vol: 15.8, mrp: 1528, retail: 1455, earn: 1245 },
+        { name: "Vritilife Moisturizer", vol: 13.15, mrp: 1473, retail: 1248, earn: 1067, gst: 18 },
+        { name: "Woman's Choice", vol: 12.45, mrp: 1245, retail: 1185, earn: 1013 },
+        { name: "Tablet Box - Medium Size with 7 Compartments Each", vol: 0, mrp: 81, retail: 77, earn: 71.5 },
+        { name: "Herbalife Improved Shaker Cup", vol: 0.33, mrp: 210, retail: 200, earn: 185.6 }
+    ];
+
+    priceMaster.sort((a,b) => a.name.localeCompare(b.name));
+
+    // Populate dropdown
+    const productSelect = document.getElementById('productSelect');
+    function renderDropdown() {
+        productSelect.innerHTML = '';
+        priceMaster.forEach((p, idx) => {
+            const option = document.createElement('option');
+            option.value = idx;
+            option.setAttribute('data-name', p.name);
+            option.setAttribute('data-vol', p.vol);
+            option.setAttribute('data-mrp', p.mrp);
+            option.setAttribute('data-retail', p.retail);
+            option.setAttribute('data-earn', p.earn);
+            option.setAttribute('data-gst', p.gst || 5);
+            option.textContent = `${p.name}  —  MRP ₹${p.mrp} / Retail ₹${p.retail}`;
+            productSelect.appendChild(option);
+        });
+        updatePricePreview();
+    }
+
+    const previewSpan = document.getElementById('selectedPricePreview');
+    function updatePricePreview() {
+        const selected = productSelect.options[productSelect.selectedIndex];
+        if (selected) {
+            const name = selected.getAttribute('data-name') || '';
+            const retail = selected.getAttribute('data-retail') || '';
+            previewSpan.innerText = `${name} — Retail ₹${retail}`;
+        } else {
+            previewSpan.innerText = 'Select product';
+        }
+    }
+    productSelect.addEventListener('change', updatePricePreview);
+
+    // Cart array
+    let cart = [];
+
+    const cartBody = document.getElementById('cartBody');
+    const cartTotalSpan = document.getElementById('cartTotal');
+    const orderSummaryText = document.getElementById('orderSummaryText');
+
+    function getGstRate(item) {
+        return item.gst || 5;
+    }
+
+    function renderCart() {
+        if (!cartBody) return;
+        let html = '';
+        let overallTotal = 0;
+        cart.forEach((item, index) => {
+            const retail = item.retail;
+            const qty = item.qty;
+            const discount = item.discountPercent || 0;
+            // columns logic:
+            const earnBase = item.earn;
+            const discOnEarn = earnBase * discount / 100;
+            const discountedPrice = retail - discOnEarn;   // as per image: Discounted Price = Retail - Discount on Earn Base
+            const subtotal = discountedPrice * qty;        // Sub-Total = Discounted Price * Qty
+            const gstRate = item.gst || 5;
+            const gst = subtotal * gstRate / 100;
+            const total = subtotal + gst;                  // Total Price = Sub-Total + GST
+
+            overallTotal += total;
+
+            html += `<tr>
+                <td class="item-name">${item.name}</td>
+                <td>${item.vol}</td>
+                <td>₹${item.mrp}</td>
+                <td>₹${retail}</td>
+                <td>₹${earnBase.toFixed(2)}</td>
+                <td>₹${discOnEarn.toFixed(2)}</td>
+                <td>₹${discountedPrice.toFixed(2)}</td>
+                <td>${qty}</td>
+                <td>₹${subtotal.toFixed(2)}</td>
+                <td>${gstRate}%<br>₹${gst.toFixed(2)}</td>
+                <td>₹${total.toFixed(2)}</td>
+                <td><button class="remove-btn" data-index="${index}"><i class="fas fa-times"></i></button></td>
+            </tr>`;
+        });
+        if (cart.length === 0) {
+            html = `<tr><td colspan="12" style="text-align:center; padding:2rem;">🛒 your cart is empty · select products</td></tr>`;
+        }
+        cartBody.innerHTML = html;
+        cartTotalSpan.innerText = overallTotal.toFixed(2);
+        // remove listeners
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = btn.getAttribute('data-index');
+                if (idx !== null) {
+                    cart.splice(idx, 1);
+                    renderCart();
+                    updateSummaryFields();
+                }
+            });
+        });
+        updateSummaryFields();
+    }
+
+    function updateSummaryFields() {
+        const hiddenField = document.getElementById('cartSummaryInput');
+        let summary = '';
+        let total = 0;
+        if (cart.length === 0) {
+            summary = 'Cart empty';
+        } else {
+            let lines = [];
+            cart.forEach(item => {
+                const retail = item.retail;
+                const qty = item.qty;
+                const disc = item.discountPercent || 0;
+                const earnBase = item.earn;
+                const discOnEarn = earnBase * disc / 100;
+                const discountedPrice = retail - discOnEarn;
+                const subtotal = discountedPrice * qty;
+                const gstRate = item.gst || 5;
+                const gst = subtotal * gstRate / 100;
+                const totalLine = subtotal + gst;
+                total += totalLine;
+                lines.push(`${item.name} x${qty} (${disc}% disc) → ₹${totalLine.toFixed(2)}`);
+            });
+            lines.push(`>>> FINAL TOTAL (incl GST): ₹${total.toFixed(2)}`);
+            summary = lines.join(' ; ');
+        }
+        if (hiddenField) hiddenField.value = summary;
+        if (orderSummaryText) {
+            if (cart.length === 0) orderSummaryText.innerText = 'No items in cart.';
+            else {
+                let text = cart.map(item => {
+                    const disc = item.discountPercent || 0;
+                    const earnBase = item.earn;
+                    const discOnEarn = earnBase * disc / 100;
+                    const discountedPrice = item.retail - discOnEarn;
+                    const subtotal = discountedPrice * item.qty;
+                    const gstRate = item.gst || 5;
+                    const gst = subtotal * gstRate/100;
+                    const tot = subtotal + gst;
+                    return `${item.name}  x${item.qty}  (${disc}% off) → ₹${tot.toFixed(2)} (incl GST)`;
+                }).join('\n');
+                text += `\n\nTOTAL: ₹${total.toFixed(2)}`;
+                orderSummaryText.innerText = text;
+            }
+        }
+    }
+
+    // Add to cart
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
+        const selectedIndex = productSelect.selectedIndex;
+        if (selectedIndex === -1) return;
+        const option = productSelect.options[selectedIndex];
+        const name = option.getAttribute('data-name');
+        const vol = parseFloat(option.getAttribute('data-vol')) || 0;
+        const mrp = parseFloat(option.getAttribute('data-mrp'));
+        const retail = parseFloat(option.getAttribute('data-retail'));
+        const earn = parseFloat(option.getAttribute('data-earn')) || 0;
+        const gst = parseInt(option.getAttribute('data-gst')) || 5;
+
+        const qty = parseInt(document.getElementById('itemQty').value, 10) || 1;
+        const presetDisc = parseInt(document.getElementById('discountSelect').value, 10) || 0;
+        const customDisc = parseFloat(document.getElementById('customDiscount').value);
+        let discountPercent = presetDisc;
+        if (!isNaN(customDisc) && customDisc >= 0) {
+            discountPercent = customDisc;
+        }
+
+        if (qty <= 0) return;
+
+        cart.push({ name, vol, mrp, retail, earn, qty, discountPercent, gst });
+        renderCart();
+        document.getElementById('customDiscount').value = '';
+    });
+
+    // Navigation
+    const cartPage = document.getElementById('cartPage');
+    const orderPage = document.getElementById('orderPage');
+
+    document.getElementById('goToCheckoutBtn').addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('Your cart is empty. Please add items before checkout.');
+            return;
+        }
+        cartPage.style.display = 'none';
+        orderPage.style.display = 'block';
+        updateSummaryFields();
+    });
+
+    document.getElementById('backToCartBtn').addEventListener('click', () => {
+        cartPage.style.display = 'block';
+        orderPage.style.display = 'none';
+    });
+
+    const form = document.getElementById('orderForm');
+    form.addEventListener('submit', (e) => {
+        updateSummaryFields();
+        return true;
+    });
+
+    // Initialise
+    renderDropdown();
+    renderCart();
+    cartPage.style.display = 'block';
+    orderPage.style.display = 'none';
+})();
+</script>
+</body>
+</html>
